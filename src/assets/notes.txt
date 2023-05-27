@@ -1,0 +1,36 @@
+views
+admin folder / url structure
+admin
+  Dashboard.vue   //layout
+    Index.vue   /admin
+  categories
+    Index.vue /admin/categories
+    Create.vue  /admin/categories/create
+    _Id.vue   /admin/categories/:slug
+  tags
+    Index.vue /admin/tags
+    Create.vue  /admin/tags/create
+    _Id.vue /admin/tags/:slug
+  books
+    Index.vue /admin/books
+    Create.vue  /admin/books/create
+    show
+      _Id.vue /admin/books/show/:slug
+    edit
+      _Id.vue /admin/books/edit/:slug
+  notifications
+    Index.vue /admin/notifications
+
+
+    Naming
+IndexView.vue   -> views    .vue /upper camel
+messages    -> state management /lover camel
+TokenService.js ->auth  /upper camel
+
+packages or libraries
+tailwind    /css
+https://plainenglish.io/blog/how-to-setup-tailwind-css-in-vue-3-405c889842d9
+
+vue-good-table-next     /table
+aos /animation
+axios   /requests
