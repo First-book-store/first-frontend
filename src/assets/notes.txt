@@ -24,7 +24,7 @@ admin
 
     Naming
 IndexView.vue   -> views    .vue /upper camel
-messages    -> state management /lover camel
+messages    -> state management /lower camel
 TokenService.js ->auth  /upper camel
 
 packages or libraries
@@ -34,3 +34,5 @@ https://plainenglish.io/blog/how-to-setup-tailwind-css-in-vue-3-405c889842d9
 vue-good-table-next     /table
 aos /animation
 axios   /requests
+
+fontawesome /icons
