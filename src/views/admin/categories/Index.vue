@@ -1,6 +1,6 @@
 <template>
     <div>
-        this is categoeries
+        This is categoeries
     </div>
 </template>
 
