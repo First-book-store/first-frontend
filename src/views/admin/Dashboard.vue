@@ -18,18 +18,18 @@
         <div class="w-5/6 text-gray-700">
             <!-- navbar -->
             <nav class="sticky top-0 flex justify-end">
-                <ul class="flex p-2 px-6 text-xl shadow-lg">
-                    <li class="px-2">
+                <ul class="flex p-2 px-4 text-xl shadow-lg">
+                    <li class="px-3">
                         <router-link to="/">
                             <i class="fa-solid fa-gear"></i>
                         </router-link>
                     </li>
-                    <li class="px-2">
+                    <li class="px-3">
                         <router-link to="/">
                             <i class="fa-solid fa-book-open"></i>
                         </router-link>
                     </li>
-                    <li class="px-2">
+                    <li class="px-3">
                         <router-link to="/">
                             <i class="fa-solid fa-bell"></i>
                         </router-link>
@@ -57,7 +57,7 @@
                     {
                         name : 'Tags',
                         icon : 'fa-solid fa-tag',
-                        path : 'Categories'
+                        path : 'Tags'
                     },
                     {
                         name : 'Books',
