@@ -36,3 +36,11 @@ aos /animation
 axios   /requests
 
 fontawesome /icons
+
+
+axios routing
+
+axios.get(url)
+axios.post(url , data)
+axios.patch(url , data)
+axios.delete(url)

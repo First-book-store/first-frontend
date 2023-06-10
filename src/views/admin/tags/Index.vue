@@ -2,7 +2,7 @@
   <div>
     <vue-good-table
       :columns="columns"
-      :rows="categories"
+      :rows="tags"
       :search-options="{
         enabled: true,
       }"
@@ -13,15 +13,19 @@
       <template #table-actions>
         <router-link
           class="px-2 py-1 transition border rounded shadow-md text-gray-50 bg-violet-400 border-violet-400 hover:bg-transparent hover:text-inherit"
-          :to="{ name: 'CreateCategory' }"
-          >create</router-link
-        >
+          :to="{ name: 'CreateTag' }" >create</router-link>
       </template>
 
       <template #table-row="props">
         <span v-if="props.column.field == 'edit'">
-            <router-link class="ml-4" :to="{name : 'EditCategory' , params : {slug : props.row.slug}}"><i class="fa-solid fa-pen"></i></router-link>
-            <button @click="deleteCategory(props.row.slug)" class="ml-4" ><i class="fa-solid fa-trash"></i></button>
+          <router-link
+            class="ml-4"
+            :to="{ name: 'EditTag', params: { slug: props.row.slug } }"
+            ><i class="fa-solid fa-pen"></i
+          ></router-link>
+          <button @click="deleteTag(props.row.slug)" class="ml-4">
+            <i class="fa-solid fa-trash"></i>
+          </button>
         </span>
         <span v-else>
           {{ props.formattedRow[props.column.field] }}
@@ -41,7 +45,7 @@ export default {
   },
   data() {
     return {
-      categories: [],
+      tags: [],
       columns: [
         {
           label: "Id",
@@ -62,24 +66,22 @@ export default {
       ],
     };
   },
-
-  mounted() {
-    this.getCategories();
+  mounted () {
+    this.getTags();
   },
-
   methods: {
-    getCategories() {
+    getTags() {
       axios
-        .get("http://localhost:8000/api/admin/categories")
+        .get("http://localhost:8000/api/admin/tags")
         .then((response) => {
-          this.categories = response.data.data;
+          this.tags = response.data.data;
         })
         .catch((response) => {
           console.log(response);
         });
     },
-    deleteCategory(slug) {
-        axios.delete(`http://localhost:8000/api/admin/categories/${slug}`).then((response) => {
+    deleteTag(slug) {
+        axios.delete(`http://localhost:8000/api/admin/tags/${slug}`).then((response) => {
             window.location.reload();
         }).catch((response) => {
             console.log(response);
@@ -89,5 +91,5 @@ export default {
 };
 </script>
 
-<style scoped>
+<style  scoped>
 </style>
