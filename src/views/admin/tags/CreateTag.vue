@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import ApiService from '../../../apiService'
     export default {
         data(){
             return{
@@ -26,7 +26,7 @@ import axios from 'axios'
         },
         methods:{
             createTag(){
-                axios.post('http://localhost:8000/api/admin/tags/',this.formData).then(()=>{
+                ApiService.post('http://localhost:8000/api/admin/tags/',this.formData).then(()=>{
                     this.$router.push({name : 'Tags'});
                 }).catch((response)=>{
                     console.log(response);

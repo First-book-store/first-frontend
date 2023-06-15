@@ -29,9 +29,9 @@
 </template>
 
 <script>
-import axios from 'axios'
 import 'vue-good-table-next/dist/vue-good-table-next.css'
 import { VueGoodTable } from 'vue-good-table-next';
+import ApiService from '../../../apiService'
 
     export default {
         components: {
@@ -63,16 +63,16 @@ import { VueGoodTable } from 'vue-good-table-next';
         mounted(){
             this.getCategories();
         },
-        methods:{
+        methods: {
             getCategories(){
-                axios.get('http://localhost:8000/api/admin/categories').then((response)=>{
+                ApiService.get('http://localhost:8000/api/admin/categories').then((response)=>{
                     this.categories = response.data.data;
                 }).catch((response)=>{
                     console.log(response);
                 })
             },
             deleteCategory(slug){
-                axios.delete(`http://localhost:8000/api/admin/categories/${slug}`).then(()=>{
+                ApiService.delete(`http://localhost:8000/api/admin/categories/${slug}`).then(()=>{
                     window.location.reload();
                 }).catch((response)=>{
                     console.log(response);

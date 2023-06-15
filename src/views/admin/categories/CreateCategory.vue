@@ -15,7 +15,8 @@
 </template>
 
 <script>
-import axios from 'axios'
+import ApiService from '../../../apiService'
+
     export default {
         data(){
             return{
@@ -26,7 +27,7 @@ import axios from 'axios'
         },
         methods:{
             createCategory(){
-                axios.post('http://localhost:8000/api/admin/categories',this.formData).then(()=>{
+                ApiService.post('http://localhost:8000/api/admin/categories',this.formData).then(()=>{
                     this.$router.push({name : 'Categories'});
                 }).catch((response)=>{
                     console.log(response);

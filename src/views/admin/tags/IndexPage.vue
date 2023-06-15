@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import ApiService from '../../../apiService'
 import "vue-good-table-next/dist/vue-good-table-next.css";
 import { VueGoodTable } from "vue-good-table-next";
 
@@ -63,14 +63,14 @@ import { VueGoodTable } from "vue-good-table-next";
         },
         methods:{
             getTags(){
-                axios.get('http://localhost:8000/api/admin/tags').then((response)=>{
+                ApiService.get('http://localhost:8000/api/admin/tags').then((response)=>{
                    this.tags = response.data.data;
                 }).catch((response)=>{
                     console.log(response);
                 })
             },
             deleteTag(slug){
-                axios.delete(`http://localhost:8000/api/admin/tags/${slug}`).then(()=>{
+                ApiService.delete(`http://localhost:8000/api/admin/tags/${slug}`).then(()=>{
                     window.location.reload();
                 }).catch((response)=>{
                     console.log(response);

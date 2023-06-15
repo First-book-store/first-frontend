@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import ApiService from '../../../apiService'
     export default {
         data(){
             return{
@@ -24,7 +24,7 @@ import axios from 'axios'
             }
         },
         mounted(){
-            axios.get(`http://localhost:8000/api/admin/tags/${this.slug}`).then((response)=>{
+            ApiService.get(`http://localhost:8000/api/admin/tags/${this.slug}`).then((response)=>{
                 this.tag = response.data.data;
             }).catch((response)=>{
                 console.log(response);
@@ -32,7 +32,7 @@ import axios from 'axios'
         },
         methods:{
             editTag(){
-                axios.patch(`http://localhost:8000/api/admin/tags/${this.slug}`,this.tag).then(()=>{
+                ApiService.patch(`http://localhost:8000/api/admin/tags/${this.slug}`,this.tag).then(()=>{
                     this.$router.push({name : 'Tags'});
                 }).catch((response)=>{
                     console.log(response);
