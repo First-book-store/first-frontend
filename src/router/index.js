@@ -1,5 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
+
+import IndexView from '../views/customer/Index.vue'
 import Dashboard from '../views/admin/Dashboard.vue'
+
 
 // categories
 import Categories from '../views/admin/categories/Index.vue'
@@ -10,14 +13,24 @@ import EditCategory from '../views/admin/categories/_Id.vue'
 import Tags from '../views/admin/tags/Index.vue'
 import CreateTag from '../views/admin/tags/Create.vue'
 import EditTag from '../views/admin/tags/_Id.vue'
+import TokenService from '../TokenService'
+import ApiService from '../ApiService'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
+      path : '/',
+      name : 'IndexView',
+      component : IndexView
+    },
+    {
       path : '/admin',
       name : 'Dashboard',
       component : Dashboard,
+      meta : {
+        middleware : 'admin'
+      },
       children : [
         {
           path : 'categories',
@@ -52,6 +65,21 @@ const router = createRouter({
       ]
     }
   ]
+})
+
+
+router.beforeEach((to , from , next) => {
+  if (to.meta.middleware == 'admin') {
+    let token = TokenService.getToken();
+    ApiService.get('http://localhost:8000/api/user').then((response) => {
+      next();
+    }).catch((respone) => {
+      window.location.assign('/')
+      TokenService.destroyToken();
+    })
+  } else {
+    next();
+  }
 })
 
 export default router
