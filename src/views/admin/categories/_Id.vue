@@ -16,6 +16,7 @@
 
 <script>
 import axios from 'axios'
+import ApiService from '../../../ApiService'
       export default {
             data () {
                   return {
@@ -24,7 +25,7 @@ import axios from 'axios'
                   }
             },
             mounted () {
-                  axios.get(`http://localhost:8000/api/admin/categories/${this.slug}`).then((response) => {
+                  ApiService.get(`http://localhost:8000/api/admin/categories/${this.slug}`).then((response) => {
                         this.category = response.data.data
                   }).catch((response) => {
                         console.log(response);
@@ -32,7 +33,7 @@ import axios from 'axios'
             },
             methods : {
                   editCategory() {
-                        axios.patch(`http://localhost:8000/api/admin/categories/${this.slug}` , this.category).then((response) => {
+                        ApiService.patch(`http://localhost:8000/api/admin/categories/${this.slug}` , this.category).then((response) => {
                              this.$router.push({name : 'Categories'}) 
                         }).catch((response) => {
                               console.log(response);

@@ -16,6 +16,7 @@
 
 <script>
 import axios from 'axios'
+import ApiService from '../../../ApiService';
       export default {
             data () {
                   return {
@@ -27,7 +28,7 @@ import axios from 'axios'
 
             methods : {
                   createCategory () {
-                        axios.post('http://localhost:8000/api/admin/categories' , this.formData).then((response) => {
+                        ApiService.post('http://localhost:8000/api/admin/categories' , this.formData).then((response) => {
                               this.$router.push({name : 'Categories'});
                         }).catch((response) => {
                               console.log(response);

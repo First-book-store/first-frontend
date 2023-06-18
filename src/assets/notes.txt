@@ -44,3 +44,11 @@ axios.get(url)
 axios.post(url , data)
 axios.patch(url , data)
 axios.delete(url)
+
+
+aauth
+access backend api
+auth for admin
+
+get token -> if token -> next
+                -> else -> redirect()

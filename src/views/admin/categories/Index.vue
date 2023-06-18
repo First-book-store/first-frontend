@@ -35,6 +35,7 @@
 import "vue-good-table-next/dist/vue-good-table-next.css";
 import { VueGoodTable } from "vue-good-table-next";
 import axios from "axios";
+import ApiService from '../../../ApiService'
 export default {
   components: {
     VueGoodTable,
@@ -69,8 +70,7 @@ export default {
 
   methods: {
     getCategories() {
-      axios
-        .get("http://localhost:8000/api/admin/categories")
+        ApiService.get("http://localhost:8000/api/admin/categories" )
         .then((response) => {
           this.categories = response.data.data;
         })
@@ -79,7 +79,8 @@ export default {
         });
     },
     deleteCategory(slug) {
-        axios.delete(`http://localhost:8000/api/admin/categories/${slug}`).then((response) => {
+
+        ApiService.delete(`http://localhost:8000/api/admin/categories/${slug}` ).then((response) => {
             window.location.reload();
         }).catch((response) => {
             console.log(response);
