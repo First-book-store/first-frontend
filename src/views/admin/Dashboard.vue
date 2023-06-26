@@ -62,7 +62,7 @@
                     {
                         name : 'Books',
                         icon : 'fa-solid fa-book-open',
-                        path : 'Categories'
+                        path : 'Books'
                     }
                 ]
             }

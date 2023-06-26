@@ -5,6 +5,7 @@ class ApiService {
 
       static setConfig () {
             let token = TokenService.getToken();
+            axios.defaults.baseURL = 'http://localhost:8000/api/';
             this.config =  {
                   headers : {
                     'Authorization' : `Bearer ${token}`

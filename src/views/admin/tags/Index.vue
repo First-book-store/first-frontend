@@ -39,6 +39,7 @@
 import "vue-good-table-next/dist/vue-good-table-next.css";
 import { VueGoodTable } from "vue-good-table-next";
 import axios from "axios";
+import ApiService from "../../../ApiService";
 export default {
   components: {
     VueGoodTable,
@@ -71,7 +72,7 @@ export default {
   },
   methods: {
     getTags() {
-      axios
+      ApiService
         .get("http://localhost:8000/api/admin/tags")
         .then((response) => {
           this.tags = response.data.data;
